@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="100" fill="#075c34"/>
+<path fill="#fff" d="M79 260c0-86 70-156 156-156 51 0 96 24 124 62l55-21 14 39-47 18c7 18 10 37 10 58v70h-43v61h-57v-61H176v61h-57v-72c-25-14-40-34-40-59zm79-58a20 20 0 1 0 0-40 20 20 0 0 0 0 40zm239 4c27 0 49 18 49 40 0 19-15 34-36 39l-10-25c12-3 20-8 20-15 0-8-11-14-25-14z"/>
+<text x="256" y="468" text-anchor="middle" font-family="Arial" font-size="42" font-weight="800" fill="#fff">ORION</text>
+</svg>

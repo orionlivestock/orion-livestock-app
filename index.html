@@ -4,9 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#075c34">
-<title>ORION LIVESTOCK V7 PLUS KG</title>
+<title>ORION LIVESTOCK</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ORION LIVESTOCK">
 <style>
 :root{
   --green:#075c34; --green2:#08753f; --blue:#0b5dcc; --orange:#e76600; --purple:#6d2bb8;
@@ -488,7 +492,110 @@ tbody tr:nth-child(even){background:#fbfcfd}
   .print-page-footer span:nth-child(3){text-align:right}
 }
 
+
+.house-filter{display:flex;align-items:center;gap:7px;flex-wrap:wrap;width:100%;padding-top:8px;border-top:1px solid #d9e2df}
+.house-filter-title{font-weight:900;color:#075b35;margin-right:4px}
+.house-chip{display:inline-flex!important;align-items:center!important;gap:5px!important;padding:7px 9px;border:1px solid #b9c8c1;border-radius:9px;background:#fff;font-size:.78rem!important;font-weight:800!important;cursor:pointer}
+.house-chip input{width:17px!important;height:17px!important;margin:0!important}
+.house-filter-actions{display:flex;gap:6px;margin-left:4px}
+.house-filter-actions button{padding:7px 10px;font-size:.75rem}
+@media(max-width:700px){.house-filter{gap:5px}.house-chip{padding:6px 7px;font-size:.72rem!important}.house-filter-title{width:100%}}
 </style>
+
+
+
+
+
+
+
+<style id="orion-v10-feed-layout-final">
+/* Feed input table: enough width so all Vietnamese headers are fully readable. */
+#feedScreenTable{
+  table-layout:fixed!important;
+  width:100%!important;
+  min-width:1240px!important;
+}
+#feedScreenTable th{
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  line-height:1.12!important;
+  padding:7px 4px!important;
+  font-size:12px!important;
+}
+#feedScreenTable th:first-child{width:72px!important}
+#feedScreenTable .feed-daily-total{width:104px!important}
+#feedScreenTable .feed-per-head-col{width:108px!important}
+#feedScreenTable .feed-per-head-cum-col{width:116px!important}
+#feedScreenTable .cum-total{width:96px!important}
+
+/* PDF table: explicit widths prevent any header from being squeezed to a few pixels. */
+#feedPrintTable{
+  width:100%!important;
+  table-layout:fixed!important;
+}
+#feedPrintTable th,#feedPrintTable td{
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  vertical-align:middle!important;
+  text-align:center!important;
+  line-height:1.12!important;
+}
+#feedPrintTable th:nth-child(1){width:9%!important}
+#feedPrintTable th:nth-child(n+2):nth-child(-n+6){width:8.2%!important}
+#feedPrintTable th.feed-daily-total{width:12%!important}
+#feedPrintTable th.feed-per-head-col{width:12.5%!important}
+#feedPrintTable th.feed-per-head-cum-col{width:13.5%!important}
+#feedPrintTable th.cum-total{width:12%!important}
+
+@media print{
+  @page{size:297mm 210mm;margin:5mm}
+  .print-page{height:198mm!important}
+  .print-page-header{height:21mm!important;margin-bottom:3mm!important}
+  .pdf-farm-title{font-size:19px!important;line-height:1.1!important}
+  .pdf-date-title{font-size:14px!important}
+  .print-contact{font-size:9px!important;line-height:1.35!important}
+  .print-contact b{font-size:10px!important}
+  .pdf-card-title{font-size:14px!important;padding:2.5mm 3mm!important}
+
+  .page-1 #pdfPigBlock .pdf-card{height:72mm!important}
+  .page-1 #pdfHealthBlock .pdf-card{height:72mm!important}
+  .page-1 .pdf-card th{font-size:10.5px!important;padding:1.8mm .6mm!important;line-height:1.12!important}
+  .page-1 .pdf-card td{font-size:12.5px!important;padding:2mm .6mm!important}
+  .page-1 .pdf-card tbody td,.page-1 .pdf-card tfoot td{font-size:13px!important}
+
+  .page-2 #pdfFeedBlock .pdf-card{height:82mm!important}
+  .page-2 #pdfFeedBlock table{table-layout:fixed!important;width:100%!important}
+  .page-2 #pdfFeedBlock .pdf-card th{
+    font-size:10px!important;
+    padding:2mm .45mm!important;
+    line-height:1.08!important;
+    white-space:normal!important;
+  }
+  .page-2 #pdfFeedBlock .pdf-card td{
+    font-size:12.5px!important;
+    padding:2.2mm .45mm!important;
+  }
+  .page-2 #pdfFeedBlock th:nth-child(1){width:9%!important}
+  .page-2 #pdfFeedBlock th:nth-child(n+2):nth-child(-n+6){width:8.2%!important}
+  .page-2 #pdfFeedBlock th.feed-daily-total{width:12%!important}
+  .page-2 #pdfFeedBlock th.feed-per-head-col{width:12.5%!important}
+  .page-2 #pdfFeedBlock th.feed-per-head-cum-col{width:13.5%!important}
+  .page-2 #pdfFeedBlock th.cum-total{width:12%!important}
+
+  .pdf-page2-grid{height:72mm!important;grid-template-columns:1.15fr .85fr!important}
+  .pdf-page2-grid .pdf-card th{font-size:10px!important;padding:1.5mm .6mm!important}
+  .pdf-page2-grid .pdf-card td{font-size:12px!important;padding:1.55mm .6mm!important}
+  .pdf-note-body{font-size:12px!important;line-height:1.5!important}
+  .print-page-footer{font-size:8.5px!important}
+
+  #pdfHealthBlock table th:nth-child(1){width:9%!important}
+  #pdfHealthBlock table th:nth-child(2){width:11%!important}
+  #pdfHealthBlock table th:nth-child(n+3):nth-child(-n+8){width:13.3%!important}
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -504,7 +611,7 @@ tbody tr:nth-child(even){background:#fbfcfd}
       <button class="nav" onclick="shiftDate(-1)">⌂ HÔM QUA</button>
       <button class="today" onclick="goToday()">▣ HÔM NAY</button>
       <button class="nav" onclick="shiftDate(1)">▣ NGÀY MAI</button>
-      <button onclick="window.print()">📄 PDF</button>
+      <button onclick="printSelected()">📄 PDF</button>
       <button onclick="exportExcel()">📊 EXCEL</button>
       <button onclick="saveDay()">💾 LƯU NGÀY</button>
       <button class="nav" onclick="scrollSettings()">⚙</button>
@@ -525,6 +632,16 @@ tbody tr:nth-child(even){background:#fbfcfd}
     <label>NGÀY BÁO CÁO: <input id="reportDate" type="date" onchange="loadDay()"></label>
     <label>FARM: <input id="farmName" value="Trần Văn Phú" onchange="saveConfig()"></label>
     <button class="edit" onclick="toggleEdit()">✎ NHẬP LIỆU / SỬA</button>
+    <div class="house-filter no-print">
+      <span class="house-filter-title">CHỌN NHÀ HIỂN THỊ:</span>
+      <span id="houseFilter"></span>
+      <span class="house-filter-actions"><button type="button" class="nav" onclick="selectAllHouses(true)">CHỌN TẤT CẢ</button><button type="button" class="nav" onclick="selectAllHouses(false)">BỎ CHỌN</button></span>
+    </div>
+    <div class="house-filter no-print">
+      <span class="house-filter-title">CỘT THỨC ĂN TÙY CHỌN:</span>
+      <label class="house-chip"><input id="optDailyPerHead" type="checkbox" onchange="toggleFeedMetric('daily',this.checked)"> LƯỢNG ĂN<br>/CON/NGÀY</label>
+      <label class="house-chip"><input id="optCumPerHead" type="checkbox" onchange="toggleFeedMetric('cum',this.checked)"> THỨC ĂN<br>LŨY KẾ/CON</label>
+    </div>
   </div>
 
   
@@ -592,8 +709,10 @@ tbody tr:nth-child(even){background:#fbfcfd}
                 <th rowspan="2">NHÀ</th>
                 <th colspan="2">A2S</th><th colspan="2">A3S</th><th colspan="2">B4S</th>
                 <th colspan="2">B5S</th><th colspan="2">MB90</th>
-                <th rowspan="2">TỔNG TRONG NGÀY (KG)</th>
-                <th rowspan="2" class="cum-total">TỔNG LŨY KẾ (KG)</th>
+                <th rowspan="2" class="feed-daily-total">LƯỢNG ĂN<br>TRONG NGÀY</th>
+                <th rowspan="2" class="feed-per-head-col">LƯỢNG ĂN<br>/CON/NGÀY</th>
+                <th rowspan="2" class="feed-per-head-cum-col">THỨC ĂN<br>LŨY KẾ/CON</th>
+                <th rowspan="2" class="cum-total">TỔNG<br>LŨY KẾ</th>
               </tr>
               <tr>
                 <th>TRONG NGÀY</th><th>LŨY KẾ</th>
@@ -610,7 +729,10 @@ tbody tr:nth-child(even){background:#fbfcfd}
           <table id="feedPrintTable">
             <thead><tr>
               <th>NHÀ</th><th>A2S</th><th>A3S</th><th>B4S</th><th>B5S</th><th>MB90</th>
-              <th>TỔNG HÔM NAY (KG)</th><th>TỔNG LŨY KẾ (KG)</th>
+              <th class="feed-daily-total">LƯỢNG ĂN<br>TRONG NGÀY</th>
+              <th class="feed-per-head-col">LƯỢNG ĂN<br>/CON/NGÀY</th>
+              <th class="feed-per-head-cum-col">THỨC ĂN<br>LŨY KẾ/CON</th>
+              <th class="cum-total">TỔNG<br>LŨY KẾ</th>
             </tr></thead>
             <tbody></tbody><tfoot></tfoot>
           </table>
@@ -621,7 +743,7 @@ tbody tr:nth-child(even){background:#fbfcfd}
         <h2>3. KHO CÁM TỔNG - DVT: KG</h2>
         <div class="table-wrap">
           <table id="stockTotalTable">
-            <thead><tr><th>MÃ CÁM</th><th>TỒN ĐẦU (KG)</th><th>NHẬP THÊM (KG)</th><th>XUẤT TRONG NGÀY (KG)</th><th>TỒN CUỐI (KG)</th></tr></thead>
+            <thead><tr><th>MÃ CÁM</th><th>TỒN ĐẦU</th><th>NHẬP THÊM</th><th>XUẤT TRONG NGÀY</th><th>TỒN CUỐI</th></tr></thead>
             <tbody></tbody><tfoot></tfoot>
           </table>
         </div>
@@ -676,45 +798,39 @@ tbody tr:nth-child(even){background:#fbfcfd}
 const FEEDS=['A2S','A3S','B4S','B5S','MB90'];
 const DEFAULT_CFG={
   farm:'Trần Văn Phú',
-  houses:[
-    {id:1,active:false,entryDate:'',entryWeeks:0,initial:0,baseFeed:{A2S:0,A3S:0,B4S:0,B5S:0,MB90:0}}
-  ],
+  houses:Array.from({length:10},(_,i)=>({id:i+1,active:true,entryDate:'',entryWeeks:0,initial:0,baseFeed:{A2S:0,A3S:0,B4S:0,B5S:0,MB90:0}})),
   openingStock:{A2S:0,A3S:0,B4S:0,B5S:0,MB90:0}
 };
-// V2 KG migration: convert any existing feed/stock values from bags to kilograms once.
-// Standard feed bag conversion used by this app: 1 bag = 25 kg.
-(function migrateFeedUnitToKg(){
-  const marker='orion_v7plus_feed_unit_kg_v1';
-  if(localStorage.getItem(marker)==='done') return;
-  const feeds=['A2S','A3S','B4S','B5S','MB90'];
-  const x25=o=>{ if(!o)return; feeds.forEach(f=>{ if(o[f]!=null)o[f]=(Number(o[f])||0)*25; }); };
-  try{
-    const ck='orion_v7plus_zero_cfg';
-    const c=JSON.parse(localStorage.getItem(ck)||'null');
-    if(c){
-      x25(c.openingStock);
-      (c.houses||[]).forEach(h=>x25(h.baseFeed));
-      localStorage.setItem(ck,JSON.stringify(c));
-    }
-    for(let i=0;i<localStorage.length;i++){
-      const k=localStorage.key(i);
-      if(!k || !k.startsWith('orion_v7plus_zero_day_')) continue;
-      const d=JSON.parse(localStorage.getItem(k)||'null');
-      if(!d) continue;
-      x25(d.stockIn); x25(d.stockEnd);
-      Object.values(d.houses||{}).forEach(h=>x25(h.feed));
-      localStorage.setItem(k,JSON.stringify(d));
-    }
-    localStorage.setItem(marker,'done');
-  }catch(e){ console.warn('Không thể quy đổi dữ liệu cám sang kg:',e); }
-})();
-let cfg=JSON.parse(localStorage.getItem('orion_v7plus_zero_cfg')||'null')||DEFAULT_CFG;
-// Phiên bản 1 nhà: chỉ giữ Nhà 1 để giao diện gọn, tránh nhầm lẫn.
-cfg.houses=[(cfg.houses&&cfg.houses.find(h=>Number(h.id)===1))||JSON.parse(JSON.stringify(DEFAULT_CFG.houses[0]))];
+// V10 dùng namespace mới để toàn bộ số liệu khởi tạo về 0, không kéo dữ liệu từ bản cũ.
+let cfg=JSON.parse(localStorage.getItem('orion_v10_cfg')||'null')||JSON.parse(JSON.stringify(DEFAULT_CFG));
+// Luôn bảo đảm đủ 10 nhà.
+for(let id=1;id<=10;id++){
+  if(!cfg.houses.some(h=>Number(h.id)===id)) cfg.houses.push(JSON.parse(JSON.stringify(DEFAULT_CFG.houses[id-1])));
+}
+cfg.houses=cfg.houses.filter(h=>Number(h.id)>=1&&Number(h.id)<=10).sort((a,b)=>a.id-b.id);
+let selectedHouses=new Set(JSON.parse(sessionStorage.getItem('orion_v10_selected_houses')||'[]').map(Number));
+let feedMetrics=JSON.parse(sessionStorage.getItem('orion_v10_feed_metrics')||'{"daily":false,"cum":false}');
+function toggleFeedMetric(k,checked){feedMetrics[k]=!!checked;sessionStorage.setItem('orion_v10_feed_metrics',JSON.stringify(feedMetrics));renderFeed();syncFeedMetricControls();}
+function syncFeedMetricControls(){if($('optDailyPerHead'))$('optDailyPerHead').checked=!!feedMetrics.daily;if($('optCumPerHead'))$('optCumPerHead').checked=!!feedMetrics.cum;}
+function isSelected(id){return selectedHouses.has(Number(id))}
+function renderHouseFilter(){
+  const el=$('houseFilter'); if(!el)return;
+  el.innerHTML=cfg.houses.map(h=>`<label class="house-chip"><input type="checkbox" ${isSelected(h.id)?'checked':''} onchange="toggleHouseSelection(${h.id},this.checked)">NHÀ ${h.id}</label>`).join('');
+}
+function toggleHouseSelection(id,checked){
+  checked?selectedHouses.add(Number(id)):selectedHouses.delete(Number(id));
+  sessionStorage.setItem('orion_v10_selected_houses',JSON.stringify([...selectedHouses]));
+  renderAll(); renderHouseFilter();
+}
+function selectAllHouses(checked){
+  selectedHouses=new Set(checked?cfg.houses.map(h=>Number(h.id)):[]);
+  sessionStorage.setItem('orion_v10_selected_houses',JSON.stringify([...selectedHouses]));
+  renderAll(); renderHouseFilter();
+}
 let data=null, editMode=true;
 const $=id=>document.getElementById(id);
 const num=v=>Number(v)||0;
-const dayKey=d=>'orion_v7plus_zero_day_'+d;
+const dayKey=d=>'orion_v10_day_'+d;
 const formatDate=d=>d?d.split('-').reverse().join('/'):'';
 const todayISO=()=>{
   const d=new Date();
@@ -797,20 +913,20 @@ function loadDay(){
 }
 function saveConfig(){
   cfg.farm=$('farmName').value.trim()||'Chưa đặt tên';
-  localStorage.setItem('orion_v7plus_zero_cfg',JSON.stringify(cfg));
+  localStorage.setItem('orion_v10_cfg',JSON.stringify(cfg));
   $('printFarm').textContent='FARM: '+cfg.farm.toUpperCase();
 }
-function renderAll(){renderPigs();renderFeed();renderStock();renderHealth();renderSettings();applyEdit()}
+function renderAll(){renderPigs();renderFeed();renderStock();renderHealth();renderSettings();renderHouseFilter();syncFeedMetricControls();applyEdit()}
 function renderPigs(){
   let date=$('reportDate').value,body=document.querySelector('#pigTable tbody');
   let T={start:0,end:0,inn:0,out:0,death:0,cull:0,cum:0,initial:0};
-  body.innerHTML=cfg.houses.map(h=>{
+  body.innerHTML=cfg.houses.filter(h=>isSelected(h.id)).map(h=>{
     let q=data.houses[h.id],start=h.active?previousEnd(h.id,date):0;
     let end=Math.max(0,start+num(q.in)-num(q.out)-num(q.death)-num(q.cull));
     q.end=end;
     let cum=cumulative(h.id,date,'death')+cumulative(h.id,date,'cull');
     let rate=h.initial?cum/num(h.initial)*100:0;
-    if(h.active){T.start+=start;T.end+=end;T.inn+=num(q.in);T.out+=num(q.out);T.death+=num(q.death);T.cull+=num(q.cull);T.cum+=cum;T.initial+=num(h.initial)}
+    if(h.active&&isSelected(h.id)){T.start+=start;T.end+=end;T.inn+=num(q.in);T.out+=num(q.out);T.death+=num(q.death);T.cull+=num(q.cull);T.cum+=cum;T.initial+=num(h.initial)}
     return `<tr>
       <td class="strong">NHÀ ${h.id}</td><td>${h.active?herdCode(h):''}</td><td>${h.active?daysRaised(h,date):''}</td>
       <td class="strong">${h.active?start:''}</td><td class="strong">${h.active?end:''}</td>
@@ -871,25 +987,39 @@ function kgInput(value,oninput){
 }
 function showValue(v){return formatKg(v)}
 function zeroClass(v){return num(v)===0?'zero-dash':''}
+function formatPerHead(v){
+  const n=Number(v);
+  if(!Number.isFinite(n)||n<=0)return '–';
+  return new Intl.NumberFormat('vi-VN',{minimumFractionDigits:2,maximumFractionDigits:3}).format(n);
+}
+function applyFeedMetricVisibility(){
+  document.querySelectorAll('.feed-per-head-col').forEach(el=>el.style.display=feedMetrics.daily?'':'none');
+  document.querySelectorAll('.feed-per-head-cum-col').forEach(el=>el.style.display=feedMetrics.cum?'':'none');
+}
 function renderFeed(){
   let date=$('reportDate').value;
-  let T={day:{},cum:{},all:0,allCum:0};
+  let T={day:{},cum:{},all:0,allCum:0,herd:0};
   FEEDS.forEach(f=>{T.day[f]=0;T.cum[f]=0});
 
-  document.querySelector('#feedScreenTable tbody').innerHTML=cfg.houses.map(h=>{
+  document.querySelector('#feedScreenTable tbody').innerHTML=cfg.houses.filter(h=>isSelected(h.id)).map(h=>{
     let q=data.houses[h.id],sum=0,sumCum=0,cells='';
     FEEDS.forEach(f=>{
       let d=num(q.feed[f]),c=h.active?cumulativeFeed(h.id,date,f):0;
       sum+=d;sumCum+=c;
-      if(h.active){T.day[f]+=d;T.cum[f]+=c}
+      if(h.active&&isSelected(h.id)){T.day[f]+=d;T.cum[f]+=c}
       cells+=`<td>${h.active
         ? kgInput(d,`setFeed(${h.id},'${f}',this.value)`)
         : `<span class="zero-dash">–</span>`}</td>
         <td class="cum-cell ${zeroClass(c)}">${h.active?showValue(c):'–'}</td>`;
     });
-    if(h.active){T.all+=sum;T.allCum+=sumCum}
+    const herd=h.active?num(q.end):0;
+    const dailyPerHead=herd?sum/herd:0;
+    const cumPerHead=herd?sumCum/herd:0;
+    if(h.active&&isSelected(h.id)){T.all+=sum;T.allCum+=sumCum;T.herd+=herd}
     return `<tr><td class="strong">NHÀ ${h.id}</td>${cells}
       <td class="today-total ${zeroClass(sum)}">${h.active?showValue(sum):'–'}</td>
+      <td class="feed-per-head-col strong">${h.active?formatPerHead(dailyPerHead):'–'}</td>
+      <td class="feed-per-head-cum-col strong">${h.active?formatPerHead(cumPerHead):'–'}</td>
       <td class="cum-total ${zeroClass(sumCum)}">${h.active?showValue(sumCum):'–'}</td></tr>`;
   }).join('');
 
@@ -897,19 +1027,31 @@ function renderFeed(){
     `<tr><td>TỔNG</td>
       ${FEEDS.map(f=>`<td class="${zeroClass(T.day[f])}">${showValue(T.day[f])}</td><td class="${zeroClass(T.cum[f])}">${showValue(T.cum[f])}</td>`).join('')}
       <td class="${zeroClass(T.all)}">${showValue(T.all)}</td>
+      <td class="feed-per-head-col">${formatPerHead(T.herd?T.all/T.herd:0)}</td>
+      <td class="feed-per-head-cum-col">${formatPerHead(T.herd?T.allCum/T.herd:0)}</td>
       <td class="cum-total ${zeroClass(T.allCum)}">${showValue(T.allCum)}</td></tr>`;
 
-  document.querySelector('#feedPrintTable tbody').innerHTML=cfg.houses.map(h=>{
+  document.querySelector('#feedPrintTable tbody').innerHTML=cfg.houses.filter(h=>isSelected(h.id)).map(h=>{
     let q=data.houses[h.id],sum=0,sumCum=0;
     let cells=FEEDS.map(f=>{
       let d=num(q.feed[f]),c=h.active?cumulativeFeed(h.id,date,f):0;
       sum+=d;sumCum+=c;
       return `<td>${h.active?showValue(d):'–'}</td>`;
     }).join('');
-    return `<tr><td>NHÀ ${h.id}</td>${cells}<td>${h.active?showValue(sum):'–'}</td><td>${h.active?showValue(sumCum):'–'}</td></tr>`;
+    const herd=h.active?num(q.end):0;
+    return `<tr><td>NHÀ ${h.id}</td>${cells}
+      <td class="feed-daily-total">${h.active?showValue(sum):'–'}</td>
+      <td class="feed-per-head-col">${h.active?formatPerHead(herd?sum/herd:0):'–'}</td>
+      <td class="feed-per-head-cum-col">${h.active?formatPerHead(herd?sumCum/herd:0):'–'}</td>
+      <td class="cum-total">${h.active?showValue(sumCum):'–'}</td></tr>`;
   }).join('');
   document.querySelector('#feedPrintTable tfoot').innerHTML=
-    `<tr><td>TỔNG</td>${FEEDS.map(f=>`<td>${showValue(T.day[f])}</td>`).join('')}<td>${showValue(T.all)}</td><td>${showValue(T.allCum)}</td></tr>`;
+    `<tr><td>TỔNG</td>${FEEDS.map(f=>`<td>${showValue(T.day[f])}</td>`).join('')}
+      <td class="feed-daily-total">${showValue(T.all)}</td>
+      <td class="feed-per-head-col">${formatPerHead(T.herd?T.all/T.herd:0)}</td>
+      <td class="feed-per-head-cum-col">${formatPerHead(T.herd?T.allCum/T.herd:0)}</td>
+      <td class="cum-total">${showValue(T.allCum)}</td></tr>`;
+  applyFeedMetricVisibility();
   applyEdit();
 }
 function setFeed(id,f,v){
@@ -933,10 +1075,10 @@ function setStock(f,v){
 }
 function renderHealth(){
   let body=document.querySelector('#healthTable tbody'),T={herd:0,diarrhea:0,resp:0,skin:0,leg:0,poor:0,other:0,issues:0};
-  body.innerHTML=cfg.houses.map(h=>{
+  body.innerHTML=cfg.houses.filter(h=>isSelected(h.id)).map(h=>{
     let q=data.houses[h.id].health,herd=h.active?num(data.houses[h.id].end):0;
     let issues=Object.values(q).reduce((s,v)=>s+num(v),0),rate=herd?issues/herd*100:0;
-    if(h.active){T.herd+=herd;Object.keys(q).forEach(k=>T[k]+=num(q[k]));T.issues+=issues}
+    if(h.active&&isSelected(h.id)){T.herd+=herd;Object.keys(q).forEach(k=>T[k]+=num(q[k]));T.issues+=issues}
     return `<tr><td class="strong">NHÀ ${h.id}</td><td class="strong">${h.active?herd:''}</td>
       ${['diarrhea','resp','skin','leg','poor','other'].map(k=>`<td>${h.active?input(q[k],`setHealth(${h.id},'${k}',this.value)`):''}</td>`).join('')}
       </tr>`;
@@ -962,7 +1104,7 @@ function renderSettings(){
 }
 function updateSetting(id,k,v){
   let h=cfg.houses.find(x=>x.id===id);h[k]=(k==='entryWeeks'||k==='initial')?num(v):v;
-  localStorage.setItem('orion_v7plus_zero_cfg',JSON.stringify(cfg));renderAll();
+  localStorage.setItem('orion_v10_cfg',JSON.stringify(cfg));renderAll();
 }
 function applyEdit(){document.querySelectorAll('td input,textarea').forEach(el=>el.disabled=!editMode)}
 function toggleEdit(){editMode=!editMode;applyEdit()}
@@ -976,11 +1118,11 @@ function goToday(){$('reportDate').value=todayISO();loadDay()}
 function scrollSettings(){$('settingsPanel').scrollIntoView({behavior:'smooth'})}
 function backup(){
   saveDay();let days={};
-  for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k.startsWith('orion_v7plus_zero_day_'))days[k.replace('orion_v7plus_zero_day_','')]=JSON.parse(localStorage.getItem(k))}
-  download(JSON.stringify({version:'V7 PLUS',cfg,days},null,2),'ORION_V7_PLUS_BACKUP.json','application/json')
+  for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k.startsWith('orion_v10_day_'))days[k.replace('orion_v10_day_','')]=JSON.parse(localStorage.getItem(k))}
+  download(JSON.stringify({version:'ORION V10 - 10 NHA',cfg,days},null,2),'ORION_V7_PLUS_BACKUP.json','application/json')
 }
-function restore(e){let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);cfg=x.cfg||cfg;localStorage.setItem('orion_v7plus_zero_cfg',JSON.stringify(cfg));Object.entries(x.days||{}).forEach(([d,v])=>localStorage.setItem(dayKey(d),JSON.stringify(v)));loadDay();alert('Khôi phục dữ liệu thành công')}catch{alert('File không hợp lệ')}};r.readAsText(e.target.files[0])}
-function clearAll(){if(confirm('Xóa toàn bộ dữ liệu ORION LIVESTOCK V7 PLUS KG?')){Object.keys(localStorage).filter(k=>k.startsWith('orion_v7plus_zero_')).forEach(k=>localStorage.removeItem(k));location.reload()}}
+function restore(e){let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);cfg=x.cfg||cfg;localStorage.setItem('orion_v10_cfg',JSON.stringify(cfg));Object.entries(x.days||{}).forEach(([d,v])=>localStorage.setItem(dayKey(d),JSON.stringify(v)));loadDay();alert('Khôi phục dữ liệu thành công')}catch{alert('File không hợp lệ')}};r.readAsText(e.target.files[0])}
+function clearAll(){if(confirm('Xóa toàn bộ dữ liệu ORION LIVESTOCK V7 PLUS KG?')){Object.keys(localStorage).filter(k=>k.startsWith('orion_v10_')).forEach(k=>localStorage.removeItem(k));location.reload()}}
 function exportExcel(){
   saveDay();let d=$('reportDate').value;
   let html=`<meta charset="utf-8"><h2>ORION LIVESTOCK - FARM ${cfg.farm}</h2><h3>NGÀY ${formatDate(d)}</h3>${['pigTable','feedPrintTable','stockTotalTable','healthTable'].map(id=>$(id).outerHTML).join('<br>')}<h3>GHI CHÚ</h3><p>${$('note').value.replace(/\n/g,'<br>')}</p>`;
@@ -1005,21 +1147,11 @@ function staticTableHTML(tableId){
 
   clone.querySelectorAll('[disabled]').forEach(el=>el.removeAttribute('disabled'));
 
-  // Ẩn nhà chưa có số liệu trong bản PDF
+  // PDF giữ đúng các nhà người dùng đã tích chọn, kể cả khi số liệu đang bằng 0.
   clone.querySelectorAll('tbody tr').forEach(row=>{
-    const cells=[...row.querySelectorAll('td')];
-    if(cells.length<2)return;
-    const first=(cells[0].textContent||'').trim().toUpperCase();
-    if(!first.startsWith('NHÀ'))return;
-
-    const values=cells.slice(1).map(td=>(td.textContent||'').trim());
-    const hasData=values.some(v=>{
-      return !(
-        v==='' || v==='–' || v==='-' || v==='0' ||
-        v==='0,0%' || v==='0,00%' || v==='0.0%' || v==='0.00%'
-      );
-    });
-    if(!hasData)row.remove();
+    const first=(row.querySelector('td')?.textContent||'').trim().toUpperCase();
+    const m=first.match(/^NHÀ\s+(\d+)/);
+    if(m && !isSelected(Number(m[1]))) row.remove();
   });
 
   return clone.outerHTML;
@@ -1032,6 +1164,12 @@ function pdfCard(title,tableId,colorClass){
   </div>`;
 }
 
+
+function printSelected(){
+  if(selectedHouses.size===0){alert('Vui lòng tích chọn ít nhất 1 nhà nuôi trước khi báo cáo PDF.');return;}
+  renderPrintPages();
+  window.print();
+}
 function renderPrintPages(){
   const farm=(cfg.farm||'').toUpperCase();
   const reportDate=formatDate($('reportDate').value);
@@ -1069,30 +1207,4 @@ loadDay();
 </script>
 </body>
 </html>
-<style id="orion-pdf-large-text-v2">
-@media print{
-  @page{size:297mm 210mm;margin:5mm}
-  .print-page{height:198mm!important}
-  .print-page-header{height:21mm!important;margin-bottom:3mm!important}
-  .pdf-farm-title{font-size:19px!important;line-height:1.1!important}
-  .pdf-date-title{font-size:14px!important}
-  .print-contact{font-size:9px!important;line-height:1.35!important}
-  .print-contact b{font-size:10px!important}
-  .pdf-card-title{font-size:14px!important;padding:2.5mm 3mm!important}
-  .page-1 #pdfPigBlock .pdf-card{height:72mm!important}
-  .page-1 #pdfHealthBlock .pdf-card{height:72mm!important}
-  .page-1 .pdf-card th,.page-1 .pdf-card td{font-size:13px!important;padding:2.2mm .7mm!important;line-height:1.15!important}
-  .page-1 .pdf-card tbody td,.page-1 .pdf-card tfoot td{font-size:15px!important}
-  .page-2 #pdfFeedBlock .pdf-card{height:82mm!important}
-  .page-2 #pdfFeedBlock .pdf-card th,.page-2 #pdfFeedBlock .pdf-card td{font-size:13.5px!important;padding:2.3mm .8mm!important}
-  .page-2 #pdfFeedBlock .pdf-card tbody td,.page-2 #pdfFeedBlock .pdf-card tfoot td{font-size:15px!important}
-  .pdf-page2-grid{height:72mm!important;grid-template-columns:1.15fr .85fr!important}
-  .pdf-page2-grid .pdf-card th,.pdf-page2-grid .pdf-card td{font-size:12.5px!important;padding:1.65mm .7mm!important}
-  .pdf-page2-grid .pdf-card tbody td,.pdf-page2-grid .pdf-card tfoot td{font-size:14px!important}
-  .pdf-note-body{font-size:12px!important;line-height:1.5!important}
-  .print-page-footer{font-size:8.5px!important}
-  #pdfHealthBlock table th:nth-child(1){width:9%}
-  #pdfHealthBlock table th:nth-child(2){width:11%}
-  #pdfHealthBlock table th:nth-child(n+3):nth-child(-n+8){width:13.3%}
-}
-</style>
+
