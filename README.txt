@@ -34,3 +34,4 @@ IPHONE / IPAD
 DỮ LIỆU
 - Dữ liệu của ứng dụng được lưu trên từng trình duyệt/thiết bị. Cài cùng website trên máy khác không tự đồng bộ dữ liệu.
 - Nên sử dụng chức năng sao lưu dữ liệu của ứng dụng định kỳ nếu có dữ liệu quan trọng.
+Update deployment 22/10/2026
